@@ -38,7 +38,7 @@ export default function About() {
           With three years of professional experience in software engineering,
           I&apos;ve honed my skills in full-stack, mobile development, and UX/UI design.
           My experience with organizations like
-          {` `}<a target="_blank" href="https://generalassemb.ly/" className='z-10 text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>General Assembly</a>,
+          {` `}<a target="_blank" href="https://generalassemb.ly/instructors/santiago-dimaren/29533" className='z-10 text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>General Assembly</a>,
           {` `}<a target="_blank" href="https://www.mitrealityhack.com/" className='text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>MIT Reality Hack</a>,
           and <a target="_blank" href="https://www.goes.health/" className='text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>Goes</a>{` `}
           have not only enhanced my technical knowledge but also fostered my
