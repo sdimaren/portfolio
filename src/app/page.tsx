@@ -25,7 +25,7 @@ export default function Home() {
   const isWhiteTheme = theme === 'white';
 
   return (
-    <div className={`relative h-screen p-4 mx-auto text-gray-300 sm:p-6 md:p-8 lg:p-12 max-w-7xl ${isWhiteTheme ? 'dark' : ''}`}>
+    <div className={`relative h-screen p-4 text-gray-300 sm:px-6 pt-[48px] md:p-8 lg:p-12 max-w-7xl ${isWhiteTheme ? 'dark' : ''}`}>
       <h1 className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-interRegular sm:px-4">Santiago Dimaren</h1>
       <h2 className="mb-3 text-lg sm:text-xl font-interRegular sm:px-4">Developer & Designer</h2>
       <nav className="mb-12 sm:px-4">
