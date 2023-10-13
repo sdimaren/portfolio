@@ -22,9 +22,9 @@
   src: url('/fonts/Inter-SemiBold.woff') format('woff');
 }
 
-body {
+body, html {
   color: rgb(var(--foreground-rgb));
-  background: '#ffffff';
+  background: '#1267fa';
 }
 
 #gradient-undefined {

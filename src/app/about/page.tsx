@@ -30,13 +30,12 @@ export default function About() {
               redirect('/');
             }
           }} className="text-gray-300 cursor-pointer hover:text-gray-500">Home</a></li>
-          <li><a href="#" className="text-gray-300 cursor-pointer hover:text-gray-500">Projects (coming soon)</a></li>
+          <li><a href="#" className="text-gray-300 cursor-pointer hover:text-gray-500">Works (coming soon)</a></li>
         </ul>
       </nav>
       <div className="w-full md:w-[880px] sm:px-4">
         <div className="text-sm text-gray-300 sm:text-base md:text-lg blend">
-          With three years of professional experience in software engineering,
-          I&apos;ve honed my skills in full-stack, mobile development, and UX/UI design.
+          Through a self-driven journey of discovery and hands-on learning in software engineering, I&lsquo;ve fostered a lifelong passion for full-stack and mobile development, as well as UX/UI design.
           My experience with organizations like
           {` `}<a target="_blank" href="https://generalassemb.ly/instructors/santiago-dimaren/29533" className='z-10 text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>General Assembly</a>,
           {` `}<a target="_blank" href="https://www.mitrealityhack.com/" className='text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>MIT Reality Hack</a>,

@@ -37,8 +37,8 @@ export const PreloaderProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     if (color && preloaderRef.current) {
       preloaderRef.current.style.backgroundColor = color;
 
-      const body = document.body;
-      body.style.backgroundColor = color;
+      // const body = document.body;
+      // body.style.backgroundColor = color;
     }
 
   }, [theme]);

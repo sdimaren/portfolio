@@ -39,7 +39,7 @@ export default function Home() {
               redirect('/about');
             }
           }} className="mb-2 text-gray-300 cursor-pointer hover:text-gray-500">Info</a></li>
-          <li><a href="#" className="text-gray-300 hover:text-gray-500">Projects (coming soon)</a></li>
+          <li><a href="#" className="text-gray-300 hover:text-gray-500">Works (coming soon)</a></li>
           <span className="mr-4 text-gray-300 cursor-pointer blend">Themes: </span>
           <button
             className="mr-4 text-gray-300 cursor-pointer blend hover:text-gray-500"
