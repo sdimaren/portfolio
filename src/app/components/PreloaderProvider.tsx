@@ -14,7 +14,7 @@ interface PreloaderContextProps {
 const getGradientColor = (theme: string) => {
   const el = document.getElementById(`gradient-${theme}`);
   if (!el) return null;
-  return getComputedStyle(el).getPropertyValue('--gradient-color-1');
+  return getComputedStyle(el).getPropertyValue('--gradient-color-3');
 };
 
 const PreloaderContext = createContext<PreloaderContextProps | null>(null);
@@ -36,7 +36,11 @@ export const PreloaderProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     const color = getGradientColor(theme);
     if (color && preloaderRef.current) {
       preloaderRef.current.style.backgroundColor = color;
+
+      const body = document.body;
+      body.style.backgroundColor = color;
     }
+
   }, [theme]);
 
   const onLoaded = () =>

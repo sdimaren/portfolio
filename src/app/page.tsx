@@ -14,8 +14,11 @@ export default function Home() {
     onRedirect();
     setTimeout(() => {
       setTheme(theme);
+    }, 600);
+    setTimeout(() => {
       onLoaded();
     }, 600);
+
   }
 
   useEffect(() => {
