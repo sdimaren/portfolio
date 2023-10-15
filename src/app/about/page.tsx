@@ -20,7 +20,7 @@ export default function About() {
       onRedirect();
       setTimeout(() => {
         router.push(path);
-      }, 400);
+      }, 800);
     }
   };
 
