@@ -5,10 +5,12 @@ import { gsap } from 'gsap';
 
 interface PreloaderContextProps {
   onLoaded: () => gsap.core.Tween;
-  onRedirect: () => gsap.core.Tween;
+  onRedirect: () => gsap.core.Tween | void;
   redirect?: (href: string) => NodeJS.Timeout;
   theme: string;
   setTheme: (theme: string) => void;
+  loaded: boolean;
+  setLoaded: (loaded: boolean) => void;
 }
 
 const getGradientColor = (theme: string) => {
@@ -20,12 +22,13 @@ const getGradientColor = (theme: string) => {
 const PreloaderContext = createContext<PreloaderContextProps | null>(null);
 
 export const PreloaderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState('black');
+  const [theme, setTheme] = useState('white');
+  const [loaded, setLoaded] = useState(false);
 
   const preloaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setTheme(() => localStorage.getItem('theme') || 'black');
+    setTheme(() => localStorage.getItem('theme') || 'white');
   }, []);
 
   useEffect(() => {
@@ -33,30 +36,27 @@ export const PreloaderProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       localStorage.setItem('theme', theme);
     }
 
-    const color = getGradientColor(theme);
+    const color = getGradientColor(theme) || '';
     if (color && preloaderRef.current) {
       preloaderRef.current.style.backgroundColor = color;
 
-      // const body = document.body;
-      // body.style.backgroundColor = color;
+      const body = document.body;
+      body.style.backgroundColor = color;
     }
+    setLoaded(true);
 
   }, [theme]);
 
   const onLoaded = () =>
     gsap.to(preloaderRef.current, { opacity: 0, duration: 1.5 });
 
-  const onRedirect = () =>
-    gsap.to(preloaderRef.current, { opacity: 1, duration: .5 });
 
-  const redirect = (href: string) =>
-    setTimeout(() => {
-      if (window) window.location.href = href;
-    }, 200);
+  const onRedirect = () =>
+    gsap.to(preloaderRef.current, { opacity: 1, duration: 1 });
 
   return (
-    <PreloaderContext.Provider value={{ onLoaded, onRedirect, redirect, theme, setTheme }}>
-      <div ref={preloaderRef} className="fixed inset-0 z-50 pointer-events-none" id="preloader"></div>
+    <PreloaderContext.Provider value={{ onLoaded, onRedirect, theme, setTheme, loaded, setLoaded }}>
+      <div ref={preloaderRef} className={`bg-[#e8e5e5] fixed inset-0 z-50 pointer-events-none`} id="preloader"></div>
       {children}
     </PreloaderContext.Provider>
   );

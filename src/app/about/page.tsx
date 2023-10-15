@@ -2,18 +2,32 @@
 import React, { useEffect } from 'react';
 import { usePreloader } from '../components/PreloaderProvider';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function About() {
+  const router = useRouter();
   const preloader = usePreloader();
 
   if (!preloader) {
     throw new Error('usePreloader must be used within a PreloaderProvider');
   }
 
-  const { onLoaded, onRedirect, redirect, theme } = preloader;
+  const { onLoaded, onRedirect, theme } = preloader;
+
+  const delayedRedirect = (e: any, path: any) => {
+    e.preventDefault();
+    if (onRedirect) {
+      onRedirect();
+      setTimeout(() => {
+        router.push(path);
+      }, 400);
+    }
+  };
 
   useEffect(() => {
-    onLoaded();
+    setTimeout(() => {
+      onLoaded();
+    }, 100);
   });
 
   const isWhiteTheme = theme === 'white';
@@ -24,18 +38,17 @@ export default function About() {
       <h2 className="mb-3 text-lg sm:text-xl font-interRegular sm:px-4">Developer & Designer</h2>
       <nav className="mb-12 sm:px-4">
         <ul className="space-y-3">
-          <li><a onClick={() => {
-            if (onRedirect && redirect && window) {
-              onRedirect();
-              redirect('/');
-            }
-          }} className="text-gray-300 cursor-pointer hover:text-gray-500">Home</a></li>
+          <li>
+            <Link legacyBehavior href="/">
+              <a onClick={(e) => delayedRedirect(e, '/')} className="text-gray-300 cursor-pointer hover:text-gray-500">Home</a>
+            </Link>
+          </li>
           <li><a href="#" className="text-gray-300 cursor-pointer hover:text-gray-500">Works (coming soon)</a></li>
         </ul>
       </nav>
       <div className="w-full md:w-[880px] sm:px-4">
         <div className="text-sm text-gray-300 sm:text-base md:text-lg blend">
-          Through a self-driven journey of discovery and hands-on learning in software engineering, I&lsquo;ve fostered a lifelong passion for full-stack and mobile development, as well as UX/UI design.
+          Through a self-driven journey of discovery and hands-on learning in software engineering, I&lsquo;ve gained a lifelong passion for full-stack and mobile development, as well as UX/UI design.
           My experience with organizations like
           {` `}<a target="_blank" href="https://generalassemb.ly/instructors/santiago-dimaren/29533" className='z-10 text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>General Assembly</a>,
           {` `}<a target="_blank" href="https://www.mitrealityhack.com/" className='text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>MIT Reality Hack</a>,

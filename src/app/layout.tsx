@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 import Gradient from './components/Gradient'
 import { PreloaderProvider } from './components/PreloaderProvider'
 import Footer from './components/Footer'
+import Home from './page'
+import About from './about/page'
+
 
 export const metadata: Metadata = {
   title: 'Santiago Dimaren Portfolio',

@@ -18,10 +18,7 @@ const Gradient: React.FC<Props> = () => {
   useEffect(() => {
     const gradient = new GradientUtil();
 
-    console.log(`gradient-${theme}`);
-
     if (theme) {
-      console.log('theme: ', theme);
       gradient.initGradient(`#gradient-${theme}`);
     } else {
       gradient.initGradient(`#gradient-canvas`);
