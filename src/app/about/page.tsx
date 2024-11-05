@@ -48,21 +48,11 @@ export default function About() {
       </nav>
       <div className="w-full md:w-[880px] sm:px-4">
         <div className="text-sm text-gray-300 sm:text-base md:text-lg blend">
-          Through a self-driven journey of discovery and hands-on learning in software engineering, I&lsquo;ve gained a lifelong passion for full-stack and mobile development, as well as UX/UI design.
-          My experience with organizations like
-          {` `}<a target="_blank" href="https://generalassemb.ly/instructors/santiago-dimaren/29533" className='z-10 text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>General Assembly</a>,
-          {` `}<a target="_blank" href="https://www.mitrealityhack.com/" className='text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>MIT Reality Hack</a>,
-          and <a target="_blank" href="https://www.goes.health/" className='text-gray-300 underline cursor-pointer hover:text-gray-500 mix-blend-difference'>Goes</a>{` `}
-          have not only enhanced my technical knowledge but also fostered my
-          leadership skills, managing proficient teams to uphold high project standards.
+          Throughout my career in software engineering, I have cultivated a lifelong passion for full-stack and mobile development, as well as UX/UI design.
+          My diverse experiences have deepened my technical expertise and honed my leadership skills, enabling me to manage high-performing teams that uphold the highest project standards.
           <br /><br />
-          I am proficient in HTML5, CSS, JavaScript/Typescript, and Python, with practical
-          experience in utilizing frameworks and libraries such as React, Angular 6+,
-          Django, and Next.js. At General Assembly, I had the opportunity to mentor early
-          engineers, ensuring they are equipped with the knowledge and skills required to
-          succeed in this industry. My contributions to MIT Reality Hack as a DevOps Lead
-          and involvement in full-stack development and UX/UI design showcased my ability
-          to enhance team efficiency and project productivity.
+          I am proficient in HTML5, CSS, JavaScript/TypeScript, and Python, with extensive hands-on experience utilizing frameworks and libraries such as React, Angular 6+, Django, and Next.js.
+          I have mentored junior engineers, equipping them with the knowledge and skills needed to excel in the industry. As a DevOps Lead, my contributions to full-stack development and UX/UI design have significantly enhanced team efficiency and project productivity.
         </div>
       </div>
     </div>
