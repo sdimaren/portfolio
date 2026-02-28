@@ -1,106 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: NeueMontreal;
-  src: url('/fonts/neue-montreal.woff') format('woff');
+body,
+html {
+  background: transparent;
+  transition: background-color 600ms ease-in-out;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
-@font-face {
-  font-family: InterRegular;
-  src: url('/fonts/Inter-Regular.woff') format('woff');
+
+#gradient-black,
+#gradient-white,
+#gradient-canvas-a,
+#gradient-canvas-b {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-@font-face {
-  font-family: InterMedium;
-  src: url('/fonts/Inter-Medium.woff') format('woff');
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
-@font-face {
-  font-family: InterSemiBold;
-  src: url('/fonts/Inter-SemiBold.woff') format('woff');
+/* Removed Fade-in animations */
+
+/* Mobile menu transition */
+#mobile-menu {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
 }
 
-body, html {
-  background: '#1267fa';
-}
-
-#gradient-undefined {
-  width:100vw;
-  height:100vh;
-  position: fixed;
-  z-index: -1;
-  --gradient-color-1: #1A2980;
-  --gradient-color-2: #26D0CE;
-  --gradient-color-3: #1A2A6C;
-  --gradient-color-4: #12E193;
-}
-
-#gradient-black {
-  width:100vw;
-  height:100vh;
-  position: fixed;
-  z-index: -1;
-  --gradient-color-1: #363636;
-  --gradient-color-2: #0e0e10;
-  --gradient-color-3: #19191c;
-  --gradient-color-4: #2e2e31;
-}
-
-#gradient-white {
-  width:100vw;
-  height:100vh;
-  position: fixed;
-  z-index: -1;
-  --gradient-color-1: #e0e0e0;
-  --gradient-color-2: #f0f0f0;
-  --gradient-color-3: #d9d9d9;
-  --gradient-color-4: #f7f7f7;
-}
-
-#gradient-blue {
-  width:100vw;
-  height:100vh;
-  position: fixed;
-  z-index: -1;
-  --gradient-color-1: #528cef;
-  --gradient-color-2: #1267fa;
-  --gradient-color-3: #1FA2FF;
-  --gradient-color-4: #2A6FDB;
-}
-
-#gradient-gold {
-  width:100vw;
-  height:100vh;
-  position: fixed;
-  z-index: -1;
-  --gradient-color-1: #675a21;
-  --gradient-color-2: #3e1d04;
-  --gradient-color-3: #c8ab1b;
-  --gradient-color-4: #ffb700;
-}
-
-h1, h2, a, li, p, span, .blend {
-  mix-blend-mode: color-dodge;
-}
-
-.dark h1, .dark h2, .dark a, .dark li, .dark p, .dark span, .dark .blend {
-  mix-blend-mode: exclusion;
+#mobile-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 input[type="range"] {
-  width: 300px;
   margin: 15px 0;
 }
-/* canvas {
-  background: #cdcdcd;
-}​ */
-.glass {
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.1px);
-  -webkit-backdrop-filter: blur(7.1px);
-  border: 1px solid rgba(255, 255, 255, 0.74);
+
+/* Minimalist Noise Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Minimalist Hover Underline Effect */
+.hover-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Selection colors — set dynamically via --accent CSS variable */
+::selection {
+  background-color: var(--accent-selection-bg, rgba(255, 191, 0, 0.3));
+  color: var(--accent-selection-text, #ffbf00);
 }

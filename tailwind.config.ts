@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   mode: 'jit',
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -14,15 +15,14 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-    },
-    fontFamily: {
-      neueMontreal: ['NeueMontreal', 'sans-serif'],
-      interRegular: ['InterRegular', 'sans-serif'],
-      interMedium: ['InterMedium', 'sans-serif'],
-      interSemibold: ['InterSemibold', 'sans-serif'],
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+      },
     },
   },
-  
+
   plugins: [],
 }
 export default config
