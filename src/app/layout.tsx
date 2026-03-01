@@ -37,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="font-sans relative w-screen min-h-screen antialiased text-gray-900 dark:text-gray-200 transition-colors duration-300">
+      <body className="font-sans relative w-full overflow-x-hidden min-h-screen antialiased text-gray-900 dark:text-gray-200 transition-colors duration-300">
         <PreloaderProvider>
           <ThemeSync />
           <div className="relative min-h-screen w-full">

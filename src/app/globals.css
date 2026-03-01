@@ -12,6 +12,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'kern' 1, 'liga' 1;
+  scroll-padding-top: 64px;
+  /* offset for fixed navbar */
 }
 
 

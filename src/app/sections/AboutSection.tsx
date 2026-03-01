@@ -15,9 +15,10 @@ export default function AboutSection() {
                     <div>
                         <FadeIn delay={0.1}>
                             <h2 className={cn("text-4xl md:text-5xl font-serif mb-10 transition-colors", "text-gray-900 dark:text-white")}>
-                                {about.title.line1}<br />
+                                {about.title.line1}{' '}
                                 <span className={cn("italic transition-colors", "text-gray-500 dark:text-gray-500")}>{about.title.line2}</span> {about.title.line3}
                             </h2>
+
                         </FadeIn>
                         <FadeIn delay={0.2}>
                             <div className={cn("space-y-6 text-lg leading-relaxed mb-12 transition-colors", "text-gray-600 dark:text-gray-400")}>

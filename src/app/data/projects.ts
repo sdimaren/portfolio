@@ -16,6 +16,7 @@ export const works: Project[] = [
         desc: 'Drove App Store rating to 4.6 in 12 months with targeted UX improvements. Grew MAU by 16% YoY and secured partnerships with Outside Magazine and AllTrails.',
         badge: 'Rating: 4.6★',
         tags: ['React Native', 'IAPHUB', 'Push Notifications'],
+        href: 'https://apps.apple.com/us/app/goes-outdoor-health-safety/id1576527901',
     },
     {
         id: 'general-assembly',
@@ -24,6 +25,7 @@ export const works: Project[] = [
         desc: 'Reviewed 1,000+ student code submissions. Boosted completion rates for 100+ aspiring engineers through targeted mentorship. Achieved 92% student satisfaction rate.',
         badge: 'Software Engineer IA',
         tags: ['Code Review', 'Mentorship', 'Full-stack'],
+        href: 'https://generalassemb.ly',
     },
     {
         id: 'music-bugle',
@@ -32,6 +34,7 @@ export const works: Project[] = [
         desc: 'Full-stack rebuild of a media platform using Next.js 14 and Sanity CMS. Cut server response time by 92% and achieved 95+ Lighthouse scores across all pages.',
         badge: 'Performance: 95+',
         tags: ['Next.js', 'Sanity', 'Tailwind', 'Stripe'],
+        href: 'https://themusicbugle.net',
     },
     {
         id: 'reality-hack',
@@ -40,6 +43,7 @@ export const works: Project[] = [
         desc: 'Open-source event management system for MIT Reality Hack. Scaled for 1,000+ attendees and handled logistics for Fortune 500 sponsors.',
         badge: 'Users: 1,000+',
         tags: ['Next.js', 'Django', 'PostgreSQL', 'Docker'],
+        href: 'https://www.mitrealityhack.com',
     }
 ]
 

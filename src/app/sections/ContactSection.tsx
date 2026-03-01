@@ -10,8 +10,8 @@ export default function ContactSection() {
     const { preset } = useTheme()
 
     return (
-        <section id="contact" className="py-32 px-6 relative overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] blur-[120px] rounded-full -z-10" style={{ backgroundColor: `${preset.glow}33` }} />
+        <section id="contact" className="py-32 px-6 relative overflow-x-clip">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] max-w-[200vw] h-[600px] blur-[200px] rounded-full -z-10 opacity-20" style={{ backgroundColor: preset.glow }} />
             <div className="max-w-4xl mx-auto text-center">
                 <FadeIn delay={0.1}>
                     <h2 className="text-5xl md:text-7xl font-serif mb-8 transition-colors text-gray-900 dark:text-white">

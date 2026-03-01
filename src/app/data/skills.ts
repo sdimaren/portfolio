@@ -8,7 +8,7 @@ export const skills: SkillGroupData[] = [
     {
         id: 'languages',
         title: 'Languages',
-        items: ['TypeScript', 'JavaScript', 'Python', 'SQL', 'HTML/CSS', 'GraphQL', 'Bash', 'Markdown'],
+        items: ['TypeScript', 'JavaScript', 'Python', 'SQL', 'NoSQL', 'GraphQL', 'HTML', 'CSS'],
     },
     {
         id: 'frameworks',
@@ -23,6 +23,6 @@ export const skills: SkillGroupData[] = [
     {
         id: 'architecture-ecosystem',
         title: 'Architecture & Ecosystem',
-        items: ['React Query', 'Zustand', 'Zod', 'REST APIs', 'Offline-First', 'Performance', 'GitHub Actions', 'Git'],
+        items: ['React Query', 'Zustand', 'Zod', 'REST APIs', 'SSR', 'Stripe / Billing', 'GitHub Actions', 'Git'],
     },
 ]

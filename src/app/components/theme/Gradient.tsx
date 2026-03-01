@@ -4,10 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import { Gradient as GradientUtil } from '../../utils/Gradient'
 import { useTheme } from '../../hooks/useTheme'
 
-/**
- * Double-buffer gradient: two canvases alternate so every preset switch
- * gets a smooth opacity crossfade, just like the original black ↔ white transition.
- */
 const Gradient = () => {
   const { preset } = useTheme()
   const canvasARef = useRef<HTMLCanvasElement>(null)

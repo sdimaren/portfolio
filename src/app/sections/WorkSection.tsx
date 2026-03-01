@@ -28,6 +28,7 @@ export default function WorkSection() {
                                 desc={project.desc}
                                 badge={project.badge}
                                 tags={project.tags}
+                                href={project.href}
                             />
                         </div>
                     ))}

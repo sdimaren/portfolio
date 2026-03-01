@@ -6,9 +6,26 @@ import { useTheme } from '../../hooks/useTheme'
 import { cn } from '../../utils/cn'
 import { siteContent } from '../../data/content'
 
+function scrollToSection(id: string) {
+    const el = document.getElementById(id)
+    if (!el) return
+    const navbarHeight = 64
+    const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight
+    window.scrollTo({ top, behavior: 'smooth' })
+}
+
+/** Convert a hex colour to an rgba() string with the given alpha */
+function hexToRgba(hex: string, alpha: number) {
+    const r = parseInt(hex.slice(1, 3), 16)
+    const g = parseInt(hex.slice(3, 5), 16)
+    const b = parseInt(hex.slice(5, 7), 16)
+    return `rgba(${r},${g},${b},${alpha})`
+}
+
 export default function Navbar() {
     const { preset } = useTheme()
     const headerDark = preset.headerDark
+    const isDark = preset.mode === 'dark' || !!headerDark
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     useEffect(() => {
@@ -26,23 +43,31 @@ export default function Navbar() {
         )}>
             <div className="max-w-7xl mx-auto pl-6 md:pl-0 pr-6 h-16 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <a href="#" className={cn(
-                        "text-xl font-serif italic font-medium tracking-wide transition-colors",
+                    <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={cn(
+                        "text-xl font-serif italic font-medium transition-colors",
                         "text-gray-900 dark:text-white",
                         headerDark && "text-white"
                     )}>
                         {siteContent.global.name}
-                    </a>
+                    </button>
                 </div>
 
                 <div className="hidden md:flex items-center gap-8">
                     {siteContent.navigation.map(nav => (
-                        <a key={nav.label} href={nav.href} className={cn("text-sm uppercase tracking-widest transition-colors", "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white", headerDark && "text-gray-400 hover:text-white")}>
+                        <button key={nav.label} onClick={() => scrollToSection(nav.href)} className={cn("text-sm font-medium transition-colors", "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white", headerDark && "text-gray-400 hover:text-white")}>
                             {nav.label}
-                        </a>
+                        </button>
                     ))}
-                    <a href="contact" className={cn("px-5 py-2 text-sm font-medium rounded-full transition-colors", "bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200", headerDark && "bg-white text-black hover:bg-gray-200")}>
+                    <button onClick={() => scrollToSection('contact')} className={cn("text-sm font-medium transition-colors", "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white", headerDark && "text-gray-400 hover:text-white")}>
                         Contact
+                    </button>
+                    <a
+                        href="/resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn("px-5 py-2 text-sm font-medium rounded-full transition-colors", "bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200", headerDark && "bg-white text-black hover:bg-gray-200")}
+                    >
+                        Resume
                     </a>
                 </div>
 
@@ -60,17 +85,30 @@ export default function Navbar() {
 
             <div
                 id="mobile-menu"
-                className={cn("md:hidden absolute top-20 left-0 right-0 backdrop-blur-md border-b p-6 flex flex-col gap-6 transition-colors", "bg-white/95 border-black/10 dark:bg-black/90 dark:border-white/5", headerDark && "bg-black/90 border-white/5")}
+                className={cn("md:hidden absolute top-[65px] left-0 right-0 backdrop-blur-xl border-b p-6 flex flex-col gap-6", isDark ? "border-white/5" : "border-black/10")}
+                style={{
+                    background: `linear-gradient(to bottom, ${hexToRgba(preset.body, 0.4)} 0%, ${hexToRgba(preset.body, 0.98)} 100%)`,
+                    transition: 'background 0.3s'
+                }}
                 role="navigation"
                 aria-label="Mobile navigation"
                 aria-hidden={!mobileMenuOpen}
             >
                 {siteContent.navigation.map(nav => (
-                    <a key={nav.label} href={nav.href} className={cn("text-lg font-serif italic transition-colors", "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white", headerDark && "text-gray-300 hover:text-white")} onClick={() => setMobileMenuOpen(false)}>
+                    <button key={nav.label} onClick={() => { scrollToSection(nav.href); setMobileMenuOpen(false) }} className={cn("text-lg font-serif italic transition-colors text-left", isDark ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-gray-900")}>
                         {nav.label}
-                    </a>
+                    </button>
                 ))}
-                <a href="contact" className={cn("text-lg font-serif italic transition-colors", "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white", headerDark && "text-gray-300 hover:text-white")} onClick={() => setMobileMenuOpen(false)}>Contact</a>
+                <button onClick={() => { scrollToSection('contact'); setMobileMenuOpen(false) }} className={cn("text-lg font-serif italic transition-colors text-left", isDark ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-gray-900")}>Contact</button>
+                <a
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn("text-lg font-serif italic transition-colors text-left", isDark ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-gray-900")}
+                >
+                    Resume
+                </a>
             </div>
         </nav>
     )
