@@ -69,6 +69,28 @@ const Gradient = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preset.id])
 
+  // Live-update colors when dragging color picker inside the same preset
+  const prevGradientRef = useRef<string>('')
+  useEffect(() => {
+    // Only set it on mount without triggering update
+    if (!prevGradientRef.current) {
+      prevGradientRef.current = preset.gradient.join(',')
+      return
+    }
+
+    const currentGradientStr = preset.gradient.join(',')
+    if (prevGradientRef.current !== currentGradientStr) {
+      prevGradientRef.current = currentGradientStr
+      const activeGradient = gradientRefs.current[activeBuffer]
+
+      if (activeGradient && typeof (activeGradient as any).updateColors === 'function') {
+        const canvas = activeBuffer === 'A' ? canvasARef.current : canvasBRef.current
+        if (canvas) applyGradientVars(canvas, preset.gradient)
+          ; (activeGradient as any).updateColors(preset.gradient)
+      }
+    }
+  }, [preset.gradient, activeBuffer])
+
   const crossfadeStyle = (buffer: 'A' | 'B'): React.CSSProperties => ({
     opacity: activeBuffer === buffer ? 1 : 0,
     transition: 'opacity 700ms cubic-bezier(0.4, 0, 0.2, 1)',

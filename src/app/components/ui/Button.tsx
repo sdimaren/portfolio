@@ -12,7 +12,7 @@ interface ButtonProps {
 
 export const Button = ({ variant = 'primary', size = 'md', href, onClick, className, children }: ButtonProps) => {
     const classes = cn(
-        "inline-flex items-center justify-center rounded-full font-medium transition-all hover:scale-105 cursor-pointer",
+        "relative inline-flex items-center justify-center rounded-full font-medium transition-all cursor-pointer",
         variant === 'primary' && "bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200",
         variant === 'outline' && "border border-black/20 text-gray-900 hover:bg-black/5 dark:border-white/20 dark:text-white dark:hover:bg-white/5",
         size === 'sm' && "px-5 py-2 text-sm",

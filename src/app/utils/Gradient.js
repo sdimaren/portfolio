@@ -503,6 +503,24 @@ class Gradient {
       return hex && `0x${hex.substr(1)}`
     }).filter(Boolean).map(normalizeColor)
   }
+  updateColors(colors) {
+    this.sectionColors = colors.map(hex => {
+      if (4 === hex.length) {
+        const hexTemp = hex.substr(1).split("").map(hexTemp => hexTemp + hexTemp).join("");
+        hex = `#${hexTemp}`
+      }
+      return hex && `0x${hex.substr(1)}`
+    }).filter(Boolean).map(normalizeColor);
+
+    if (this.uniforms && this.uniforms.u_baseColor) {
+      this.uniforms.u_baseColor.value = this.sectionColors[0];
+      for (let e = 1; e < this.sectionColors.length; e += 1) {
+        if (this.uniforms.u_waveLayers.value[e - 1] && this.uniforms.u_waveLayers.value[e - 1].value.color) {
+          this.uniforms.u_waveLayers.value[e - 1].value.color.value = this.sectionColors[e];
+        }
+      }
+    }
+  }
 }
 
 

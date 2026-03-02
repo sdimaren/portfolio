@@ -12,32 +12,68 @@ interface PreloaderContextProps {
   preset: ThemePreset
   presetId: string
   setPresetId: (id: string) => void
+  setCustomGradient: (id: string, colors: [string, string, string, string] | null) => void
+  useMixBlend: boolean
+  setUseMixBlend: (value: boolean) => void
 }
 
 const PreloaderContext = createContext<PreloaderContextProps | null>(null)
 
 export const PreloaderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [presetId, setPresetIdState] = useState(DEFAULT_PRESET_ID)
+  const [customGradients, setCustomGradientsState] = useState<Record<string, [string, string, string, string]>>({})
   const [loaded, setLoaded] = useState(false)
   const [preloaderDone, setPreloaderDone] = useState(false)
+  const [useMixBlend, setUseMixBlend] = useState(false)
   const preloaderRef = useRef<HTMLDivElement>(null)
 
-  const preset = getPresetById(presetId)
+  const basePreset = getPresetById(presetId)
+  const preset = {
+    ...basePreset,
+    gradient: customGradients[presetId] || basePreset.gradient
+  }
   const theme = preset.mode === 'light' ? 'white' : 'black'
 
-  // Read saved preset from localStorage on mount
+  // Read saved preset and custom gradients from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem('themePreset')
     if (saved) {
       const validPreset = getPresetById(saved)
       setPresetIdState(validPreset.id)
+      if (validPreset.defaultMixBlend) {
+        setUseMixBlend(true)
+      }
+    }
+    const savedGradients = localStorage.getItem('customGradients')
+    if (savedGradients) {
+      try {
+        setCustomGradientsState(JSON.parse(savedGradients))
+      } catch (e) { }
     }
   }, [])
 
   const setPresetId = useCallback((id: string) => {
     const validPreset = getPresetById(id)
     setPresetIdState(validPreset.id)
+    if (validPreset.defaultMixBlend) {
+      setUseMixBlend(true)
+    } else {
+      setUseMixBlend(false)
+    }
     localStorage.setItem('themePreset', validPreset.id)
+  }, [])
+
+  const setCustomGradient = useCallback((id: string, colors: [string, string, string, string] | null) => {
+    setCustomGradientsState(prev => {
+      const next = { ...prev }
+      if (colors) {
+        next[id] = colors
+      } else {
+        delete next[id]
+      }
+      localStorage.setItem('customGradients', JSON.stringify(next))
+      return next
+    })
   }, [])
 
   // Legacy setTheme for backward compat
@@ -64,7 +100,7 @@ export const PreloaderProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }), [])
 
   return (
-    <PreloaderContext.Provider value={{ onLoaded, theme, setTheme, loaded, preset, presetId, setPresetId }}>
+    <PreloaderContext.Provider value={{ onLoaded, theme, setTheme, loaded, preset, presetId, setPresetId, setCustomGradient, useMixBlend, setUseMixBlend }}>
       {!preloaderDone && (
         <div
           ref={preloaderRef}

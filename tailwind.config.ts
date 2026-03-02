@@ -16,9 +16,13 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Graphik', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         serif: ['Playfair Display', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+      },
+      colors: {
+        'blend-contrast': '#ffffff',
+        'editorial-charcoal': '#2d2f33',
       },
     },
   },

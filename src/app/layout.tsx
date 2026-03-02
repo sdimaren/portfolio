@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: '/logo.svg',
+  },
 }
 
 export default function RootLayout({
@@ -42,7 +45,7 @@ export default function RootLayout({
           <ThemeSync />
           <div className="relative min-h-screen w-full">
             <Gradient />
-            <div className="relative z-10">
+            <div className="relative">
               {children}
             </div>
           </div>

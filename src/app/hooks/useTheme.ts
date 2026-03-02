@@ -13,9 +13,9 @@ export function useTheme() {
         throw new Error('useTheme must be used within a PreloaderProvider')
     }
 
-    const { theme, setTheme, preset, presetId, setPresetId } = preloader
+    const { theme, setTheme, preset, presetId, setPresetId, setCustomGradient, useMixBlend, setUseMixBlend, loaded } = preloader
     const isLight = theme === 'white'
     const accent = preset.accent
 
-    return { theme, isLight, setTheme, accent, preset, presetId, setPresetId }
+    return { theme, isLight, setTheme, accent, preset, presetId, setPresetId, setCustomGradient, useMixBlend, setUseMixBlend, loaded }
 }
