@@ -33,7 +33,6 @@ export default function ContactSection() {
                     {[
                         { icon: Github, href: siteContent.global.github, label: 'GitHub' },
                         { icon: Linkedin, href: siteContent.global.linkedin, label: 'LinkedIn' },
-                        { icon: Globe, href: siteContent.global.website, label: 'Website' },
                         { icon: Mail, href: `mailto:${siteContent.global.email}`, label: 'Email' }
                     ].map(({ icon: Icon, href, label }) => (
                         <a key={label} href={href} target={label === 'Email' ? undefined : "_blank"} rel={label === 'Email' ? undefined : "noopener noreferrer"} className="transition-colors p-2 rounded-full" aria-label={label}>
