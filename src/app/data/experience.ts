@@ -38,6 +38,6 @@ export const experience: ExperienceItem[] = [
 
 export const stats: Stat[] = [
     { id: 'years', value: '04+', label: 'Years Exp.' },
-    { id: 'integrations', value: '30+', label: 'Integrations' },
+    { id: 'integrations', value: '20+', label: 'Integrations' },
     { id: 'mentored', value: '1k+', label: 'Student Code Reviews' },
 ]
