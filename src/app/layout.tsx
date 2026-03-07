@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Gradient from './components/theme/Gradient'
 import { PreloaderProvider } from './components/providers/PreloaderProvider'
 import ThemeSync from './components/theme/ThemeSync'
+import GoogleAnalytics from './components/analytics/GoogleAnalytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sdimaren.vercel.app'),
@@ -40,6 +41,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <GoogleAnalytics />
       <body className="font-sans relative w-full overflow-x-hidden min-h-screen antialiased text-gray-900 dark:text-gray-200 transition-colors duration-300">
         <PreloaderProvider>
           <ThemeSync />
