@@ -19,7 +19,7 @@ export const siteContent = {
         badge: "Open to New Opportunities",
         heading: {
             line1: "Crafting",
-            line2: "Exceptional",
+            line2: "Scalable",
             line3: "Products.",
         },
         description: "I build and ship scalable mobile and web applications that drive growth, maximize performance, and prioritize the user experience.",
